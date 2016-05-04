@@ -1,12 +1,9 @@
 import json
+import keymanage  # get keys
 
 
 def main():
-    with open("./.key/key") as f:
-        aa = f.read()
-        print aa
-        a = json.loads(aa)
-        print a
+    pass
 
 
 if __name__ == '__main__':
