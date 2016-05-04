@@ -59,6 +59,7 @@ class chbtc_api:
             return doc
         except Exception, ex:
             print >> sys.stderr, 'chbtc request ex: ', ex
+            raise ex
             return None
 
     def query_account(self):
@@ -73,8 +74,18 @@ class chbtc_api:
             print >> sys.stderr, 'chbtc query_account exception,', ex
             return None
 
-
-
+    def make_order(self, price, amount, tradeType, currency):
+        try:
+            params = "method=order&accesskey=" + self.mykey + "&price=" + price + \
+                     "&amount=" + amount + "&tradeType=" + tradeType + "&currency=" + currency
+            path = 'order'
+            obj = self.__api_call(path, params)
+            # print obj
+            return obj
+        except Exception, ex:
+            print >> sys.stderr, 'chbtc make_order_api exception,', ex
+            raise ex
+            return None
 
 
 if __name__ == '__main__':
