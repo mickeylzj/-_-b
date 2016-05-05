@@ -1,4 +1,9 @@
-﻿import json, urllib.request, hashlib, struct, time, sys
+﻿import json
+import urllib.request
+import hashlib
+import struct
+import time
+import sys
 
 
 class chbtc_api:
@@ -120,8 +125,8 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            # print >> sys.stderr, 'chbtc query_account exception,', ex
-            return None
+            sys.stderr.write('chbtc get_account_info exception,', ex)
+            raise ex
 
     def __make_order(self, price, amount, tradeType, currency):
         # 返回值说明
@@ -137,7 +142,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            # print >> sys.stderr, 'chbtc make_order_api exception,', ex
+            sys.stderr.write('chbtc make_order_api exception,', ex)
             raise ex
             # return None
 
@@ -172,7 +177,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_order exception,', ex
+            sys.stderr.write('chbtc get_order exception,', ex)
             raise ex
             # return None
 
@@ -201,7 +206,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_order_list exception,', ex
+            sys.stderr.write('chbtc __get_order_list exception,', ex)
             raise ex
             # return None
 
@@ -236,7 +241,36 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_order_list exception,', ex
+            sys.stderr.write('chbtc get_order_list(IgnoreTradeType) exception,', ex)
+            raise ex
+            # return None
+
+    def get_unfinished_order_list(self, currency: str = 'btc', pageIndex: int = 1, pageSize: int = 100):
+        # 返回值说明
+        #
+        # currency: 交易类型（目前仅支持BTC / LTC / ETH）
+        # id: 委托的挂单号
+        # price: 单价
+        # status: 挂单状态（0、待成交
+        # 1、取消
+        # 2、交易完成
+        # 3、待成交未交易部份）
+        # total_amount: 挂单总数量
+        # trade_amount: 已成交数量
+        # trade_date: Unix
+        # 时间戳
+        # trade_money: 已成交总金额
+        # type: 挂单类型
+        # 1 / 0[buy / sell]
+        try:
+            params = "method=getUnfinishedOrdersIgnoreTradeType&accesskey=" + self.mykey + \
+                     "&currency=" + str(currency) + "&pageIndex=" + str(pageIndex) + "&pageSize=" + str(pageSize)
+            path = 'getUnfinishedOrdersIgnoreTradeType'
+            obj = self.__api_call(path, params)
+            # print obj
+            return obj
+        except Exception as ex:
+            sys.stderr.write('chbtc get_unfinished_order_list exception,', ex)
             raise ex
             # return None
 
@@ -253,7 +287,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_order_list exception,', ex
+            sys.stderr.write('chbtc cancel_order exception,', ex)
             raise ex
             # return None
 
