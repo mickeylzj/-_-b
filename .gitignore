@@ -4,6 +4,7 @@
 .key
 .key/
 .idea/
+.idea
 *.pydevproject
 .project
 .metadata
