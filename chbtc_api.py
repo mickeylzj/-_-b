@@ -141,8 +141,8 @@ class chbtc_api:
             raise ex
             # return None
 
-    def make_buy(self, price, amount):
-        return self.__make_order(price, amount, "1", "btc")
+    def make_buy(self, price: float, amount: float):
+        return self.__make_order(str(price), str(amount), "1", "btc")
 
     def make_sell(self, price, amount):
         return self.__make_order(price, amount, "0", "btc")
@@ -256,7 +256,6 @@ class chbtc_api:
             print >> sys.stderr, 'chbtc get_order_list exception,', ex
             raise ex
             # return None
-
 
 #
 # if __name__ == '__main__':
