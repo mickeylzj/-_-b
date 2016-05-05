@@ -13,8 +13,9 @@ class trade_api:
             doc = json.loads(response.read())
             return doc
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_ticker error: ', ex
-            return None
+
+            sys.stderr.write('chbtc get_ticker error\n')
+            raise ex
 
     def get_depth(self):
         try:
@@ -24,8 +25,8 @@ class trade_api:
             doc = json.loads(response.read())
             return doc
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_depth error: ', ex
-            return None
+            sys.stderr.write('chbtc get_depth error\n')
+            raise ex
 
     def get_trades(self, since=None):
         try:
@@ -38,5 +39,5 @@ class trade_api:
             doc = json.loads(response.read())
             return doc
         except Exception as ex:
-            print >> sys.stderr, 'chbtc get_depth error: ', ex
-            return None
+            sys.stderr.write('chbtc get_depth error\n')
+            raise ex

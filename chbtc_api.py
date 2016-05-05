@@ -125,7 +125,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc get_account_info exception,', ex)
+            sys.stderr.write('chbtc get_account_info exception\n')
             raise ex
 
     def __make_order(self, price, amount, tradeType, currency):
@@ -142,7 +142,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc make_order_api exception,', ex)
+            sys.stderr.write('chbtc make_order_api exception\n')
             raise ex
             # return None
 
@@ -177,7 +177,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc get_order exception,', ex)
+            sys.stderr.write('chbtc get_order exception\n')
             raise ex
             # return None
 
@@ -206,7 +206,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc __get_order_list exception,', ex)
+            sys.stderr.write('chbtc __get_order_list exception\n')
             raise ex
             # return None
 
@@ -241,7 +241,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc get_order_list(IgnoreTradeType) exception,', ex)
+            sys.stderr.write('chbtc get_order_list(IgnoreTradeType) exception\n')
             raise ex
             # return None
 
@@ -270,7 +270,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc get_unfinished_order_list exception,', ex)
+            sys.stderr.write('chbtc get_unfinished_order_list exception\n')
             raise ex
             # return None
 
@@ -287,7 +287,7 @@ class chbtc_api:
             # print obj
             return obj
         except Exception as ex:
-            sys.stderr.write('chbtc cancel_order exception,', ex)
+            sys.stderr.write('chbtc cancel_order exception\n')
             raise ex
             # return None
 
